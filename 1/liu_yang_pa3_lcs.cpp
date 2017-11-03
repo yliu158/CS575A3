@@ -55,16 +55,37 @@ void prepareMatrix(const string& str_1, const string& str_2){
 }
 
 void lengthLCS() {
+  string input = "";
+  bool sign = true;
+  while (sign) {
 
-  string str_1;
-  string str_2;
-  getString(str_1);
-  getString(str_2);
-  prepareMatrix(str_1, str_2);
-  printMatrix();
-  cout << "The longest common substring is: ";
-  cout << matrix.at(matrix.size()-1).at(matrix.at(0).size()-1);
-  cout << endl;
+    string str_1;
+    string str_2;
+    getString(str_1);
+    getString(str_2);
+    prepareMatrix(str_1, str_2);
+    printMatrix();
+    cout << "The longest common substring is: ";
+    cout << matrix.at(matrix.size()-1).at(matrix.at(0).size()-1);
+    cout << endl;
+
+    cout << "Press any other button to continue." << endl;
+    cout << "Press e to Exit." << endl;
+    cin >> input;
+    if (input[0] == 'e' || input[0] == 'E') {
+      sign = false;
+    }
+
+    while (cin.fail()) {
+      cin.clear();
+      cin.ignore();
+      cin >> input;
+      if (input[0] == 'e' || input[0] == 'E') {
+         sign = false;
+      }
+    }
+  }
+  cout << "Successfully Exited" << endl;
 
 }
 
