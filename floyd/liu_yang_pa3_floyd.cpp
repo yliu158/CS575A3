@@ -5,20 +5,25 @@
 
 using namespace std;
 
+// global variable matrix D and matrix P
 vector<vector<int> > D_matrix;
 vector<vector<int> > P_matrix;
-int n;
+int n; // size of the matrix
 
-int getInput();
-void setGraph();
-void shortestPath();
-void printMatrix();
+//declaration of functions
+int getInput();// get size of matrix from user
+void setGraph();// prepare the graph by generating random numbers
+void shortestPath(); // implement floyd algorithm
+void printMatrix(); // print matrix
 
+// main function
 int main(int argc, char const *argv[]) {
   shortestPath();
   return 0;
 }
 
+// implementation of functions
+// get the size of matrix from user
 int getInput() {
   cout << "Please input a value for n: ";
   int n = 0;
@@ -43,6 +48,7 @@ int getInput() {
   return n;
 }
 
+// prepare the graph by generating random numbers
 void setGraph() {
   n = getInput();
   D_matrix = vector<vector<int> >(n, vector<int>(n));
@@ -63,12 +69,15 @@ void setGraph() {
   }
 }
 
+// implement floyd algorithm
 void shortestPath(){
 
   string input = "";
   bool sign = true;
+  // run the program in a infinite loop and stopped by user
   while (sign) {
     setGraph();
+    // print the initial matrix
     printMatrix();
     for (int k = 0; k < n; k++){
       for (int i = 0; i < n; i++) {
@@ -108,6 +117,7 @@ void shortestPath(){
 
 }
 
+// implement printMatrix
 void printMatrix() {
   cout << "D_matrix is :\n";
   for (int i = 0; i < D_matrix.size(); i++) {
